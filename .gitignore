@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.map
+*.d.ts
+*.d.mts
