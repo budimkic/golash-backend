@@ -3,3 +3,4 @@ dist/
 *.map
 *.d.ts
 *.d.mts
+.env
