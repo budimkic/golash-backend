@@ -7,10 +7,8 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "rootDir": "src",
     "strict": true,
-   // "isolatedModules": false
   },  
-  "include": ["src/**/*"]
+  "include": ["**/*.ts"]
 }
  
