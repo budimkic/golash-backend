@@ -33,8 +33,8 @@ type CheckoutRequestBody = {
 // Zoho SMTP setup
 const transporter = nodemailer.createTransport({
   host: "smtp.zoho.eu",
-  port: 587,
-  secure: false,
+  port: 465,
+  secure: true,
   auth: {
     user: "orders@golash.store",
     pass: process.env.ZOHO_PASS,
