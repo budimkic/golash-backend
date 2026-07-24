@@ -38,7 +38,7 @@ const brevo = new BrevoClient({
 });
 
 // Basic format checks
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^[+\d][\d\s()-]{6,}$/;
 
 // Rate limit: 10 checkout attempts per 15 minutes per IP
