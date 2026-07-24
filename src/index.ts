@@ -93,6 +93,8 @@ Cart:
 ${cart.items.map((i: CartItem) => `${i.product.name} (Size: ${i.selectedSize}) x${i.quantity}`).join("\n")}
 `;
 
+console.log("--> About to call Brevo API...");
+
       // Send email using the modern Brevo client
       await brevo.transactionalEmails.sendTransacEmail({
         sender: { email: "orders@golash.store", name: "Golash Store" },
@@ -101,6 +103,8 @@ ${cart.items.map((i: CartItem) => `${i.product.name} (Size: ${i.selectedSize}) x
         subject: `New Golash Order from ${name}`,
         textContent: emailText,
       });
+
+      console.log("--> Brevo API call successful!");
 
       res.json({ success: true, message: "Order sent!" });
     } catch (err) {
