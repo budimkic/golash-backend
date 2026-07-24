@@ -55,6 +55,7 @@ app.post(
   async (req: Request<{}, {}, CheckoutRequestBody>, res: Response, next: NextFunction) => {
     console.log("--> CHECKOUT ENDPOINT HIT!");
     try {
+      console.log("--> Inside try block, inspecting request body...");
       if (!req.body || !req.body.shippingInfoState || !req.body.cart) {
         return res.status(400).json({ error: "Invalid request payload" });
       }
@@ -79,6 +80,8 @@ app.post(
       if (trimmedInfo.length > 500) {
         return res.status(400).json({ error: "Additional info must be 500 characters or less" });
       }
+
+      console.log("--> Mapping cart items...");
 
       const emailText = `
 Name: ${name}
