@@ -91,7 +91,7 @@ Address: ${address}
 City: ${city}
 Post code: ${postCode}
 Country: ${country}
-Additional info: ${trimmedInfo || "N/A"}
+Additional info: ${additionalInfo || "N/A"}
 Cart:
 ${cart.items.map((i: CartItem) => `${i.product.name} (Size: ${i.selectedSize}) x${i.quantity}`).join("\n")}
 `;
