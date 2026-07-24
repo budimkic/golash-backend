@@ -57,6 +57,7 @@ app.post(
     try {
       console.log("--> Inside try block, inspecting request body...");
       if (!req.body || !req.body.shippingInfoState || !req.body.cart) {
+        console.log("FAIL: Invalid request payload");
         return res.status(400).json({ error: "Invalid request payload" });
       }
 
@@ -64,21 +65,20 @@ app.post(
       const { name, email, phoneNumber, address, city, postCode, country, additionalInfo } = shippingInfoState;
 
       if (!name || !email || !phoneNumber || !address || !city || !postCode || !country) {
+        console.log("FAIL: Missing required shipping fields");
         return res.status(400).json({ error: "Missing required shipping information fields" });
       }
       if (!EMAIL_RE.test(email)) {
+        console.log("FAIL: Invalid email format:", email);
         return res.status(400).json({ error: "Invalid email address" });
       }
       if (!PHONE_RE.test(phoneNumber)) {
+        console.log("FAIL: Invalid phone number:", phoneNumber);
         return res.status(400).json({ error: "Invalid phone number" });
       }
-      if (!Array.isArray(cart.items) || cart.items.length === 0) {
+      if (!Array.isArray(cart?.items) || cart.items.length === 0) {
+        console.log("FAIL: Cart is empty or items is not an array");
         return res.status(400).json({ error: "Cart is empty or invalid" });
-      }
-
-      const trimmedInfo = additionalInfo?.trim() ?? "";
-      if (trimmedInfo.length > 500) {
-        return res.status(400).json({ error: "Additional info must be 500 characters or less" });
       }
 
       console.log("--> Mapping cart items...");
