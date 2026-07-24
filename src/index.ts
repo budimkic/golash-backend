@@ -52,8 +52,8 @@ const checkoutLimiter = rateLimit({
 
 app.post(
   "/checkout",
-  checkoutLimiter,
   async (req: Request<{}, {}, CheckoutRequestBody>, res: Response, next: NextFunction) => {
+    console.log("--> CHECKOUT ENDPOINT HIT!");
     try {
       if (!req.body || !req.body.shippingInfoState || !req.body.cart) {
         return res.status(400).json({ error: "Invalid request payload" });
