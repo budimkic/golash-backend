@@ -7,6 +7,8 @@ import { BrevoClient } from "@getbrevo/brevo";
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 app.use(cors({ origin: process.env.FRONTEND_ORIGIN || "https://golash.store" }));
 app.use(express.json({ limit: "100kb" }));
 
