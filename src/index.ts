@@ -32,12 +32,12 @@ type CheckoutRequestBody = {
 
 // Zoho SMTP setup
 const transporter = nodemailer.createTransport({
-  host: "smtp.zoho.eu",
-  port: 465,
-  secure: true,
+  host: "smtp-relay.brevo.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: "orders@golash.store",
-    pass: process.env.ZOHO_PASS,
+    user: "budimkic@proton.me",
+    pass: process.env.BREVO_PASS,
   },
 });
 
@@ -89,7 +89,7 @@ ${items.map((i: CartItem) => `${i.product.name} (Size: ${i.selectedSize}) x${i.q
    try {
       console.log("Attempting to connect to Zoho and send email...");
       console.log("Using user email:", "orders@golash.store");
-      console.log("Password length check:", process.env.ZOHO_PASS ? process.env.ZOHO_PASS.length : "NO PASSWORD FOUND");
+      console.log("Password length check:", process.env.BREVO_PASS ? process.env.BREVO_PASS.length : "NO PASSWORD FOUND");
 
       let info = await transporter.sendMail(message);
       
